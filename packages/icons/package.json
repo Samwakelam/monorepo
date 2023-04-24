@@ -16,6 +16,7 @@
     "@types/react": "^18.0.24",
     "@vitejs/plugin-react": "^2.2.0",
     "@vitest/ui": "^0.24.5",
+    "concurrently": "^8.0.1",
     "react": "^18.2.0",
     "react-cosmos": "^5.7.2",
     "ts-loader": "^9.4.1",

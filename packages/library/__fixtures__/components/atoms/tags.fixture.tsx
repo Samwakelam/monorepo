@@ -1,5 +1,5 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { ReactElement } from 'react';
+
 import { TagColour, Tags } from '../../../src';
 
 const Wrapper = ({ children }: { children: ReactElement }) => (

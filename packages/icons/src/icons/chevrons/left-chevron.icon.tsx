@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ChevronLeftIcon = (): JSX.Element => {
   return (
     <svg

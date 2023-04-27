@@ -5,7 +5,7 @@
   "main": "./index.js",
   "types": "./index.ts",
   "scripts": {
-    "dev": "vite serve --port=8081 & cosmos",
+    "dev": "concurrently \"vite serve --port=8081\" \"cosmos\"",
     "test": "vitest --ui",
     "lint": "eslint *.ts*",
     "cosmos:export": "cosmos-export"

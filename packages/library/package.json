@@ -5,7 +5,7 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "dev": "vite serve --port=8080 & cosmos",
+    "dev": "concurrently \"vite serve --port=8080\" \"cosmos\"",
     "test": "vitest --run",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",

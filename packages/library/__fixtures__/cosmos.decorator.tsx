@@ -10,5 +10,9 @@ import { globalStyles } from '../src/styles/global';
 export default ({ children }: { children: ReactNode }) => {
   setup(themeConfig);
 
-  return <div className={tw(css(globalStyles))}>{children}</div>;
+  return (
+    <div className={tw(css(globalStyles))} style={{ height: '100vh' }}>
+      {children}
+    </div>
+  );
 };

@@ -3,9 +3,8 @@ import { tw } from '@sam/theme/twind';
 
 import {
   Button,
-  ButtonVariant,
+  ButtonType,
   ConfirmModal,
-  ConfirmModalType,
   EntryModal,
   Modal,
   SizeType,
@@ -51,18 +50,18 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
 
       <div className={tw(S.ButtonBoxCss)}>
         <Button
-          icon={{ icon: 'pencil', ariaLabel: 'edit' }}
-          buttonVariant={ButtonVariant.PRIMARY}
+          icon={{ icon: 'pencil', ariaLabel: 'edit', format: 'only' }}
+          buttonType={ButtonType.PRIMARY}
           onClick={() => handlers.onModalAction(`update-${widgetId}`)}
         />
         <Button
-          icon={{ icon: 'bin', ariaLabel: 'delete' }}
-          buttonVariant={ButtonVariant.PRIMARY}
+          icon={{ icon: 'bin', ariaLabel: 'delete', format: 'only' }}
+          buttonType={ButtonType.PRIMARY}
           onClick={() => handlers.onModalAction(`delete-${widgetId}`)}
         />
         {handlers.resolvePublishedState(widgetId) ? (
           <Button
-            startIcon={{ icon: 'cross', ariaLabel: 'un-publish' }}
+            icon={{ icon: 'cross', ariaLabel: 'un-publish', format: 'start' }}
             className={tw(S.UnPublishButtonCss)}
             onClick={async (e) => {
               setProcessing('unpublish');
@@ -75,8 +74,8 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
           </Button>
         ) : (
           <Button
-            startIcon={{ icon: 'tick', ariaLabel: 'publish' }}
-            buttonVariant={ButtonVariant.SUCCESS}
+            icon={{ icon: 'tick', ariaLabel: 'publish', format: 'start' }}
+            buttonType={ButtonType.SUCCESS}
             onClick={async (e) => {
               setProcessing('publish');
               await handlers.onPublish(e, widgetId);
@@ -90,8 +89,8 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
         {handlers.resolveUnPublishedChanges(widgetId) && (
           <Tooltip content="Publish Changes" size={SizeType.L}>
             <Button
-              icon={{ icon: 'tick', ariaLabel: 'publish' }}
-              buttonVariant={ButtonVariant.PRODUCT}
+              icon={{ icon: 'tick', ariaLabel: 'publish', format: 'only' }}
+              buttonType={ButtonType.PRODUCT}
               onClick={async (e) => {
                 setProcessing('publishChanges');
                 await handlers.onPublish(e, widgetId);
@@ -107,12 +106,13 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
         isOpen={state.openModal === `delete-${widgetId}`}
         onRequestClose={() => handlers.onModalAction(null)}
       >
-        <ConfirmModal
+        <></>
+        {/* <ConfirmModal - NOTE this has changed structure
           type={ConfirmModalType.DELETE}
           widgetId={widgetId}
           dispatches={{ onDelete: handlers.deleteWidget }}
           onClose={() => handlers.onModalAction(null)}
-        />
+        /> */}
       </Modal>
       <Modal
         isOpen={state.openModal === `update-${widgetId}`}

@@ -16,7 +16,7 @@ export const ToggleCss = css({
   },
 });
 
-export const SpanStyles = `before:(block content-[''])`;
+export const SpanClasses = `before:(block content-[''])`;
 
 export const SpanCss = css({
   '&': {

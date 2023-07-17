@@ -10,19 +10,22 @@ import fixture1 from './../__fixtures__/components/atoms/button.fixture.tsx';
 import fixture2 from './../__fixtures__/components/atoms/card.fixture.tsx';
 import fixture3 from './../__fixtures__/components/atoms/carousel.fixture.tsx';
 import fixture4 from './../__fixtures__/components/atoms/dropdown.fixture.tsx';
-import fixture5 from './../__fixtures__/components/atoms/modal.fixture.tsx';
-import fixture6 from './../__fixtures__/components/atoms/placeholder.fixture.tsx';
-import fixture7 from './../__fixtures__/components/atoms/side-menu-link.fixture.tsx';
-import fixture8 from './../__fixtures__/components/atoms/slide-out-drawer.fixture.tsx';
-import fixture9 from './../__fixtures__/components/atoms/tags.fixture.tsx';
-import fixture10 from './../__fixtures__/components/atoms/tooltip.fixture.tsx';
-import fixture11 from './../__fixtures__/components/molecules/confirm-modal.fixture.tsx';
-import fixture12 from './../__fixtures__/forms/atoms/input.fixture.tsx';
-import fixture13 from './../__fixtures__/forms/atoms/toggle.fixture.tsx';
-import fixture14 from './../__fixtures__/forms/molecules/checkbox-group.fixture.tsx';
-import fixture15 from './../__fixtures__/forms/molecules/input-group.fixture.tsx';
-import fixture16 from './../__fixtures__/views/contenful-app.fixture.tsx';
-import fixture17 from './../__fixtures__/views/web-app.fixture.tsx';
+import fixture5 from './../__fixtures__/components/atoms/group.fixture.tsx';
+import fixture6 from './../__fixtures__/components/atoms/modal.fixture.tsx';
+import fixture7 from './../__fixtures__/components/atoms/placeholder.fixture.tsx';
+import fixture8 from './../__fixtures__/components/atoms/side-menu-link.fixture.tsx';
+import fixture9 from './../__fixtures__/components/atoms/side-menu.fixture.tsx';
+import fixture10 from './../__fixtures__/components/atoms/slide-out-drawer.fixture.tsx';
+import fixture11 from './../__fixtures__/components/atoms/star-rating.fixture.tsx';
+import fixture12 from './../__fixtures__/components/atoms/tags.fixture.tsx';
+import fixture13 from './../__fixtures__/components/atoms/tooltip.fixture.tsx';
+import fixture14 from './../__fixtures__/components/molecules/confirm-modal.fixture.tsx';
+import fixture15 from './../__fixtures__/forms/atoms/input.fixture.tsx';
+import fixture16 from './../__fixtures__/forms/atoms/toggle.fixture.tsx';
+import fixture17 from './../__fixtures__/forms/molecules/checkbox-group.fixture.tsx';
+import fixture18 from './../__fixtures__/forms/molecules/input-group.fixture.tsx';
+import fixture19 from './../__fixtures__/views/contenful-app.fixture.tsx';
+import fixture20 from './../__fixtures__/views/web-app.fixture.tsx';
 
 import decorator0 from './../__fixtures__/cosmos.decorator.tsx';
 
@@ -36,19 +39,22 @@ export const fixtures = {
   '__fixtures__/components/atoms/card.fixture.tsx': { module: { default: fixture2 } },
   '__fixtures__/components/atoms/carousel.fixture.tsx': { module: { default: fixture3 } },
   '__fixtures__/components/atoms/dropdown.fixture.tsx': { module: { default: fixture4 } },
-  '__fixtures__/components/atoms/modal.fixture.tsx': { module: { default: fixture5 } },
-  '__fixtures__/components/atoms/placeholder.fixture.tsx': { module: { default: fixture6 } },
-  '__fixtures__/components/atoms/side-menu-link.fixture.tsx': { module: { default: fixture7 } },
-  '__fixtures__/components/atoms/slide-out-drawer.fixture.tsx': { module: { default: fixture8 } },
-  '__fixtures__/components/atoms/tags.fixture.tsx': { module: { default: fixture9 } },
-  '__fixtures__/components/atoms/tooltip.fixture.tsx': { module: { default: fixture10 } },
-  '__fixtures__/components/molecules/confirm-modal.fixture.tsx': { module: { default: fixture11 } },
-  '__fixtures__/forms/atoms/input.fixture.tsx': { module: { default: fixture12 } },
-  '__fixtures__/forms/atoms/toggle.fixture.tsx': { module: { default: fixture13 } },
-  '__fixtures__/forms/molecules/checkbox-group.fixture.tsx': { module: { default: fixture14 } },
-  '__fixtures__/forms/molecules/input-group.fixture.tsx': { module: { default: fixture15 } },
-  '__fixtures__/views/contenful-app.fixture.tsx': { module: { default: fixture16 } },
-  '__fixtures__/views/web-app.fixture.tsx': { module: { default: fixture17 } }
+  '__fixtures__/components/atoms/group.fixture.tsx': { module: { default: fixture5 } },
+  '__fixtures__/components/atoms/modal.fixture.tsx': { module: { default: fixture6 } },
+  '__fixtures__/components/atoms/placeholder.fixture.tsx': { module: { default: fixture7 } },
+  '__fixtures__/components/atoms/side-menu-link.fixture.tsx': { module: { default: fixture8 } },
+  '__fixtures__/components/atoms/side-menu.fixture.tsx': { module: { default: fixture9 } },
+  '__fixtures__/components/atoms/slide-out-drawer.fixture.tsx': { module: { default: fixture10 } },
+  '__fixtures__/components/atoms/star-rating.fixture.tsx': { module: { default: fixture11 } },
+  '__fixtures__/components/atoms/tags.fixture.tsx': { module: { default: fixture12 } },
+  '__fixtures__/components/atoms/tooltip.fixture.tsx': { module: { default: fixture13 } },
+  '__fixtures__/components/molecules/confirm-modal.fixture.tsx': { module: { default: fixture14 } },
+  '__fixtures__/forms/atoms/input.fixture.tsx': { module: { default: fixture15 } },
+  '__fixtures__/forms/atoms/toggle.fixture.tsx': { module: { default: fixture16 } },
+  '__fixtures__/forms/molecules/checkbox-group.fixture.tsx': { module: { default: fixture17 } },
+  '__fixtures__/forms/molecules/input-group.fixture.tsx': { module: { default: fixture18 } },
+  '__fixtures__/views/contenful-app.fixture.tsx': { module: { default: fixture19 } },
+  '__fixtures__/views/web-app.fixture.tsx': { module: { default: fixture20 } }
 };
 
 export const decorators = {

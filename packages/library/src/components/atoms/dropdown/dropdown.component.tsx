@@ -2,7 +2,7 @@ import { ReactElement, useRef } from 'react';
 
 import { tw } from '@sam/theme/twind';
 
-import { Button, ButtonVariant } from '../button';
+import { Button, ButtonType } from '../button';
 
 import {
   ActiveStyleType,
@@ -55,16 +55,16 @@ export const Dropdown = ({
             >
               <Button
                 className={tw(
-                  S.MenuButtonStyles,
+                  S.MenuButtonClasses,
                   menuItem.activeStyle &&
                     resolveActiveStyle(menuItem.activeStyle, menuItem.isActive)
                 )}
-                buttonVariant={ButtonVariant.NONE}
+                buttonType={ButtonType.NONE}
                 onClick={(e: any) => {
                   menuItem.onClick && menuItem.onClick();
                   handlers.onClose();
                 }}
-                startIcon={menuItem.icon}
+                icon={menuItem.icon}
               >
                 {menuItem.text}
               </Button>
@@ -83,7 +83,7 @@ export const resolveActiveStyle = (
   const _styles = [];
 
   if (styles?.includes(ActiveStyleType.BOLD) && isActive) {
-    _styles.push(S.SelectedBoldStyles);
+    _styles.push(S.SelectedBoldClasses);
   }
   if (styles?.includes(ActiveStyleType.BACKGROUND) && isActive) {
     _styles.push(S.SelectedBackgroundCss);

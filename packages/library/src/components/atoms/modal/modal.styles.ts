@@ -1,7 +1,5 @@
 import { css, theme } from '@sam/theme/twind';
 
-export const ModalStyles = ``;
-
 export const ModalCss = css({
   '&': {
     backgroundColor: theme('colors.neutral.50'),
@@ -24,7 +22,7 @@ export const ModalCss = css({
   },
 });
 
-export const OverlayStyles = `
+export const OverlayClasses = `
     sm:(
       bg(neutral-600 opacity-75)
     )

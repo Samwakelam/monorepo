@@ -30,7 +30,7 @@ export const Toggle = ({
     <div className={tw(S.ContainerCss)}>
       <label className={tw(S.ToggleCss)} onClick={onToggle}>
         <span
-          className={tw(S.SpanCss, S.SpanStyles)}
+          className={tw(S.SpanCss, S.SpanClasses)}
           data-active={isActive}
           data-name={name}
           ref={spanRef}

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
 
 export type CardProps = {
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 };

@@ -20,7 +20,10 @@ const SlideCss = (even: boolean) =>
 const getChildren = (number: number) => {
   return Array.from({ length: number }, (_, index) => {
     return (
-      <div className={tw(SlideCss(index % 2 === 0))}>
+      <div
+        className={tw(SlideCss(index % 2 === 0))}
+        key={`carousel-fixture-slide-${index}`}
+      >
         <h1>Slide {index + 1}</h1>
       </div>
     );

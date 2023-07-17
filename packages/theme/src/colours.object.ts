@@ -1,4 +1,10 @@
-export const colours = {
+export type Colours = {
+  [key: string]: any;
+};
+
+export const colours: Colours = {
+  black: '#000000',
+  white: '#ffffff',
   slate: {
     50: '#f8fafc',
     100: '#f1f5f9',
@@ -11,7 +17,7 @@ export const colours = {
     800: '#1e293b',
     900: '#0f172a',
   },
-  gray: {
+  grey: {
     50: '#f9fafb',
     100: '#f3f4f6',
     200: '#e5e7eb',

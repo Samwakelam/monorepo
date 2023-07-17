@@ -63,7 +63,7 @@ export const ContentfulAppComponent = ({}: ContentfulAppProps) => {
       <div className={tw(S.ColumnCss)}>
         <Placeholder className={tw(S.PlaceholderCss)}>
           <Button
-            startIcon={{ icon: 'plus', ariaLabel: 'plus' }}
+            icon={{ icon: 'plus', ariaLabel: 'plus', format: 'start' }}
             onClick={() => handlers.onModalAction('add')}
           >
             Add Component

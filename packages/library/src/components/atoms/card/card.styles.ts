@@ -1,8 +1,5 @@
 import { css, theme } from '@sam/theme/twind';
 
-export const CardStyles = `
-`;
-
 export const CardCss = css({
   '&': {
     backgroundColor: theme('colors.neutral.50'),

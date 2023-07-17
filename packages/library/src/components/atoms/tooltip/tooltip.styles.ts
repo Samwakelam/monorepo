@@ -7,7 +7,7 @@ export const TooltipCss = css({
   },
 });
 
-export const TipStyles = `before:(block content-[''])`;
+export const TipClasses = `before:(block content-[''])`;
 
 export const TipCss = css({
   '&': {

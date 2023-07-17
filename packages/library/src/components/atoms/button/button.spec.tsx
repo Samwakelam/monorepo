@@ -14,7 +14,9 @@ describe.only('button.component', () => {
 
   it('should have an aria label when an icon element is defined', () => {
     const button = (
-      <Button startIcon={{ icon: 'plus', ariaLabel: 'plus' }}>Button</Button>
+      <Button icon={{ icon: 'plus', ariaLabel: 'plus', format: 'start' }}>
+        Button
+      </Button>
     );
 
     render(button);
@@ -24,7 +26,10 @@ describe.only('button.component', () => {
 
   it('should have an aria label of loading when a loading button is requested', () => {
     const button = (
-      <Button startIcon={{ icon: 'plus', ariaLabel: 'plus' }} loading>
+      <Button
+        icon={{ icon: 'plus', ariaLabel: 'plus', format: 'start' }}
+        loading
+      >
         Button
       </Button>
     );
@@ -36,7 +41,10 @@ describe.only('button.component', () => {
 
   it('should hide the second span component when the loading attribute is applied', () => {
     const button = (
-      <Button startIcon={{ icon: 'plus', ariaLabel: 'plus' }} loading>
+      <Button
+        icon={{ icon: 'plus', ariaLabel: 'plus', format: 'start' }}
+        loading
+      >
         Button
       </Button>
     );
@@ -55,7 +63,7 @@ describe.only('button.component', () => {
     expect(screen.getByRole('button').disabled).toBeTruthy();
   });
 
-  it('should fire and onClick event when requested', () => {
+  it('should fire an onClick event when requested', () => {
     const action = vi.fn();
     const button = <Button onClick={() => action()}>Button</Button>;
 
@@ -66,7 +74,7 @@ describe.only('button.component', () => {
     expect(action).toBeCalled();
   });
 
-  it.only('should NOT fire and onClick event when requested on a disabled button', () => {
+  it.only('should NOT fire an onClick event when requested on a disabled button', () => {
     const action = vi.fn();
     const button = (
       <Button onClick={() => action()} disabled>

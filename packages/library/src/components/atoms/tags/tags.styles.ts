@@ -16,6 +16,8 @@ export const TagCss = css({
     borderRadius: theme('spacing.4'),
     paddingLeft: theme('spacing.4'),
     paddingRight: theme('spacing.4'),
+    paddingTop: theme('spacing.2'),
+    paddingBottom: theme('spacing.1'),
   },
 });
 
@@ -37,5 +39,13 @@ export const BlueCss = css({
   '&': {
     backgroundColor: theme('colors.sky.600'),
     color: theme('colors.neutral.50'),
+  },
+});
+
+export const WhiteCss = css({
+  '&': {
+    backgroundColor: theme('colors.neutral.50'),
+    color: theme('colors.neutral.900'),
+    boxShadow: theme('boxShadow.tag'),
   },
 });

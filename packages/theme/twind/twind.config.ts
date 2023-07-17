@@ -1,7 +1,7 @@
 import { Configuration } from 'twind';
 import { content } from '@twind/content';
 
-import { colours, font } from '../src';
+import { colours, font, gradient } from '../src';
 import { parseFontSize } from './helpers/parse-font-size.helper';
 
 export const themeConfig: Configuration = {
@@ -9,6 +9,7 @@ export const themeConfig: Configuration = {
   theme: {
     spacing: {
       0: '0',
+      1: '0.0625',
       2: '0.125rem',
       4: '0.25rem',
       8: '0.5rem',
@@ -45,6 +46,10 @@ export const themeConfig: Configuration = {
       boxShadow: {
         card: '0px 4px 15px rgba(0, 0, 0, 0.1)',
         drawer: '0px 4px 15px rgba(0, 0, 0, 0.4)',
+        tag: '0px 0px 10px rgba(0, 0, 0, 0.4)',
+      },
+      gradientColorStops: {
+        ...gradient,
       },
     },
   },

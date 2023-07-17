@@ -1,6 +1,6 @@
-import { ThemeConfiguration } from 'twind';
+export type Font = { [key: string]: any };
 
-export const font = {
+export const font: Font = {
   fontFamily: {
     montserrat: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
     roboto: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],

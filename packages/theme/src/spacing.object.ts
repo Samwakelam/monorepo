@@ -1,5 +1,8 @@
-export const spacing = {
+export type Spacing = { [key: number]: string };
+
+export const spacing: Spacing = {
   0: '0',
+  1: '0.0625',
   2: '0.125rem',
   4: '0.25rem',
   8: '0.5rem',

@@ -4,7 +4,6 @@ import {
   useRef,
   useState,
   Children,
-  useEffect,
 } from 'react';
 
 import { tw } from '@sam/theme/twind';
@@ -27,6 +26,12 @@ export const Carousel = ({
     next: true,
   });
 
+  /**
+   * @function next
+   * @param {number} multiplier - describes how many slides to scroll with each click, use minus numbers for previous slide actions
+   * @description - how far the carousel ref should scroll by, this function can be used for both previous and next actions
+   * @returns {void}
+   */
   const next = (multiplier: number): void => {
     if (!carousel.current) return;
 
@@ -79,7 +84,7 @@ export const Carousel = ({
   return (
     <section className={tw(S.CarouselCss)}>
       <Button
-        icon={{ icon: 'chevron-left', ariaLabel: 'previous' }}
+        icon={{ icon: 'chevron-left', ariaLabel: 'previous', format: 'only' }}
         onClick={() => {
           next(-1);
         }}
@@ -92,6 +97,7 @@ export const Carousel = ({
             <div
               className={tw(S.CarouselSlideCss(basis()))}
               id={`carousel_slide_${index}`}
+              key={`carousel_slide_${index}`}
             >
               {child}
             </div>
@@ -100,7 +106,7 @@ export const Carousel = ({
       </div>
 
       <Button
-        icon={{ icon: 'chevron-right', ariaLabel: 'next' }}
+        icon={{ icon: 'chevron-right', ariaLabel: 'next', format: 'only' }}
         onClick={() => {
           next(1);
         }}

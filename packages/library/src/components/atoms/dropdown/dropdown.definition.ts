@@ -1,8 +1,7 @@
 import { ReactElement } from 'react';
 
-import { IconProps } from '@sam/icons';
 import { ColourType } from '@sam/types';
-import { ButtonProps } from '../button';
+import { ButtonIconProps, ButtonProps } from '../button';
 
 export enum DropdownType {
   MAIN = 'main',
@@ -26,7 +25,7 @@ export enum ActiveStyleType {
 
 export type MenuItemProps = {
   text: string;
-  icon?: IconProps;
+  icon?: ButtonIconProps;
   colour?: ColourType;
   isActive?: boolean;
   activeStyle?: ActiveStyleType[];

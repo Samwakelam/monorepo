@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { tw } from '@sam/theme/twind';
 
-import { Button, ButtonVariant } from '../button';
+import { Button, ButtonType } from '../button';
 
 import { ModalProps } from './modal.definition';
 
@@ -29,7 +29,7 @@ export const Modal = ({
       ref={modal}
       className={tw(S.ModalCss)}
       overlayClassName={{
-        base: tw(S.OverlayCss, S.OverlayStyles),
+        base: tw(S.OverlayCss, S.OverlayClasses),
         afterOpen: tw(S.OverlayAfterOpenCss),
         beforeClose: tw(S.OverlayBeforeCloseCss),
       }}
@@ -42,8 +42,8 @@ export const Modal = ({
       <div className={tw(S.HeaderCss)}>
         {modalTitle && <h5>{modalTitle}</h5>}
         <Button
-          buttonVariant={ButtonVariant.SECONDARY}
-          icon={{ icon: 'cross', ariaLabel: 'close' }}
+          buttonType={ButtonType.SECONDARY}
+          icon={{ icon: 'cross', ariaLabel: 'close', format: 'only' }}
           onClick={onRequestClose}
         />
       </div>

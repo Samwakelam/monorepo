@@ -11,10 +11,6 @@ export const Placeholder = ({
   className,
 }: PlaceholderProps): ReactElement<PlaceholderProps> => {
   return (
-    <div
-      className={tw(apply(S.PlaceholderCss, S.PlaceholderStyles), className)}
-    >
-      {children}
-    </div>
+    <div className={tw(apply(S.PlaceholderCss), className)}>{children}</div>
   );
 };

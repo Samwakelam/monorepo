@@ -6,6 +6,8 @@
 import './global.css';
 
 import fixture0 from './../__fixtures__/colours.fixture.tsx';
+import fixture1 from './../__fixtures__/gradient.fixture.tsx';
+import fixture2 from './../__fixtures__/styles.fixture.tsx';
 
 import decorator0 from './../__fixtures__/cosmos.decorator.tsx';
 
@@ -14,7 +16,9 @@ export const rendererConfig = {
 };
 
 export const fixtures = {
-  '__fixtures__/colours.fixture.tsx': { module: { default: fixture0 } }
+  '__fixtures__/colours.fixture.tsx': { module: { default: fixture0 } },
+  '__fixtures__/gradient.fixture.tsx': { module: { default: fixture1 } },
+  '__fixtures__/styles.fixture.tsx': { module: { default: fixture2 } }
 };
 
 export const decorators = {

@@ -1,7 +1,5 @@
 import { css, theme } from '@sam/theme/twind';
 
-export const PlaceholderStyles = ``;
-
 export const PlaceholderCss = css({
   '&': {
     width: '100%',

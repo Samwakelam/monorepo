@@ -1,4 +1,4 @@
-export type SlideMenuLinkProps = {
+export type SideMenuLinkProps = {
   label: string;
   href: string;
   isActive: boolean;

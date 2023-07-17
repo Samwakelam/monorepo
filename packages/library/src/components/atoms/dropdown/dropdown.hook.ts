@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { tw } from '@sam/theme/twind';
 import { Hook } from '@sam/types';
 
-import { ButtonVariant } from '../button';
+import { ButtonType } from '../button';
 
 import {
   Alignment,
@@ -53,10 +53,11 @@ export const useDropdown = (
       case TriggerType.V_TRIMMED: {
         return {
           className: tw(S.MenuTriggerStyles, S.MenuTriggerCss),
-          buttonVariant: ButtonVariant.NONE,
+          buttonType: ButtonType.NONE,
           icon: {
             icon: 'more-v',
             ariaLabel: 'trimmed vertical menu',
+            format: 'only',
           },
           onClick: () =>
             setState((prev) => ({ ...prev, isActive: !prev.isActive })),
@@ -69,10 +70,11 @@ export const useDropdown = (
             S.MenuTriggerCss,
             S.TriggerSelectedCss
           ),
-          buttonVariant: ButtonVariant.NONE,
-          endIcon: {
+          buttonType: ButtonType.NONE,
+          icon: {
             icon: state.isActive ? 'chevron-up' : 'chevron-down',
             ariaLabel: 'more',
+            format: 'end',
           },
           children: currentMenuItem ? currentMenuItem.text : undefined,
           onClick: () =>

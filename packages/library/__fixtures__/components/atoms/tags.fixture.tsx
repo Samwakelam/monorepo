@@ -59,6 +59,21 @@ export default {
       </Wrapper>
     );
   },
+  ['White']: () => {
+    return (
+      <Wrapper>
+        <Tags
+          tags={[
+            {
+              value: 'Tag',
+              showTag: true,
+              colour: TagColour.WHITE,
+            },
+          ]}
+        />
+      </Wrapper>
+    );
+  },
   ['Multiple Tags']: () => {
     return (
       <Wrapper>

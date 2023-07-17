@@ -9,10 +9,13 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:restaurant": "concurrently \"cd apps/restaurant-app && pnpm run dev\" \"pnpm run dev:packages\"",
+    "dev:packages": "turbo run dev --filter=./packages/*",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
     "eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
@@ -20,6 +23,5 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
   "packageManager": "pnpm@6.20.1"
 }

@@ -1,18 +1,18 @@
 import { tw } from '@sam/theme/twind';
 
-import { SlideMenuLinkProps } from './side-menu-link.definition';
+import { SideMenuLinkProps } from './side-menu-link.definition';
 
 import * as S from './side-menu-link.styles';
 
-export const SlideMenuLink = ({
+export const SideMenuLink = ({
   href,
   isActive,
   label,
-}: SlideMenuLinkProps) => {
+}: SideMenuLinkProps) => {
   return (
     <a
       href={href}
-      className={tw(S.SlideMenuLinkCss, isActive && S.SlideMenuLinkActiveCss)}
+      className={tw(S.SideMenuLinkCss, isActive && S.SideMenuLinkActiveCss)}
     >
       {label}
     </a>

@@ -36,7 +36,7 @@ export const globalStyles = css({
     h3: {
       fontFamily: theme('fontFamily.montserrat'),
       color: theme('colors.neutral.900'),
-      fontSize: theme('fontSize.120'),
+      fontSize: theme('fontSize.12'),
       fontWeight: theme('fontWeight.bold'),
       margin: 0,
       textTransform: 'uppercase',

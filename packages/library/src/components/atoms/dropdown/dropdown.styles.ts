@@ -5,7 +5,7 @@ export const MenuDropdownCss = css({
   position: 'relative',
 });
 
-export const MenuTriggerStyles = `before:(block absolute -inset-x-12 -inset-y-12 content-[''])`;
+export const MenuTriggerClasses = `before:(block absolute -inset-x-12 -inset-y-12 content-[''])`;
 
 export const MenuTriggerCss = css({
   '&': { height: 'unset', width: 'unset' },
@@ -73,7 +73,7 @@ export const MenuItemsCss = (colour: string = ColourType.GREY) =>
     },
   });
 
-export const MenuButtonStyles = `
+export const MenuButtonClasses = `
  before:(block absolute inset-y-0 opacity-20 content-[''] w-full mx-[-24px] my-[-12px])
 `;
 
@@ -102,7 +102,7 @@ export const TriggerSelectedCss = css({
   },
 });
 
-export const SelectedBoldStyles = `font-bold`;
+export const SelectedBoldClasses = `font-bold`;
 
 export const SelectedBackgroundCss = css({
   '&': {},

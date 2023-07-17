@@ -52,9 +52,16 @@ export const Icon = ({
   fill = FillType.SOLID,
   ariaLabel,
   className,
+  onMouseOver,
+  onMouseOut,
 }: IconProps): ReactElement<IconProps> => {
   return (
-    <i className={className} aria-label={ariaLabel}>
+    <i
+      className={className}
+      aria-label={ariaLabel}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+    >
       {fill === 'solid'
         ? createElement(iconSolidsMap[icon])
         : createElement(iconMap[icon])}

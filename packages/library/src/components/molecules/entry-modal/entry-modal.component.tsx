@@ -1,7 +1,7 @@
 import { tw } from '@sam/theme/twind';
 
 import { InputGroup } from '../../../forms';
-import { Button, ButtonVariant } from '../../atoms';
+import { Button, ButtonType } from '../../atoms';
 
 import { useEntryModal } from './entry-modal.hook';
 import { EntryModalProps } from './entry-modal.definition';
@@ -48,7 +48,7 @@ export const EntryModal = ({
       />
 
       <Button
-        buttonVariant={ButtonVariant.PRIMARY}
+        buttonType={ButtonType.PRIMARY}
         disabled={handlers.resolveIsButtonDisabled() || state.isProcessing}
         loading={state.isProcessing}
         {...handlers.resolveSubmitButton()}

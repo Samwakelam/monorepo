@@ -38,7 +38,7 @@ export const Tooltip = ({
       {children}
       {active && (
         <div
-          className={tw(S.TipStyles, S.TipCss, resolveTipDirection(direction))}
+          className={tw(S.TipClasses, S.TipCss, resolveTipDirection(direction))}
           style={{ width: resolveTipSize(size) }}
         >
           {content}

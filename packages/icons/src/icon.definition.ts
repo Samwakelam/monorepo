@@ -33,6 +33,8 @@ export type IconProps = {
   ariaLabel: string;
   fill?: FillType;
   className?: string;
+  onMouseOver?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onMouseOut?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export type IconMapProps = { [key: string]: () => JSX.Element };

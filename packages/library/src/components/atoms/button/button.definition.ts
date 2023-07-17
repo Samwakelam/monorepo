@@ -2,23 +2,32 @@ import React, { ReactNode } from 'react';
 
 import { IconProps } from '@sam/icons';
 
-export enum ButtonVariant {
+export enum ButtonType {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   TERTIARY = 'tertiary',
   SUCCESS = 'success',
   PRODUCT = 'product',
+  GRADIENT = 'gradient',
   NONE = 'none',
+}
+
+export enum ButtonVariant {
+  FILL = 'fill',
+  LINE = 'line',
+}
+
+export interface ButtonIconProps extends IconProps {
+  format: 'end' | 'start' | 'only';
 }
 
 export type ButtonProps = {
   children?: ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  buttonVariant?: ButtonVariant;
+  buttonType?: ButtonType;
+  variant?: ButtonVariant;
   className?: string;
-  startIcon?: IconProps;
-  endIcon?: IconProps;
-  icon?: IconProps;
+  icon?: ButtonIconProps;
   disabled?: boolean;
   loading?: boolean;
 };

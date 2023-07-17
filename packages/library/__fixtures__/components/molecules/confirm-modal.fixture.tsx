@@ -1,69 +1,52 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-import { ConfirmModalType, ConfirmModal, Modal } from '../../../src';
+import { useState } from 'react';
+import { Button, ButtonProps, ButtonType, ConfirmModal } from '../../../src';
+
+const acceptButton: ButtonProps = {
+  children: 'accept',
+  buttonType: ButtonType.SUCCESS,
+  onClick: () => alert('Accept Button Clicked'),
+  icon: {
+    format: 'start',
+    icon: 'tick',
+    ariaLabel: 'accept',
+  },
+};
+
+const declineButton: ButtonProps = {
+  children: 'decline',
+  onClick: () => alert('Decline Button Clicked'),
+};
 
 export default {
-  ['Delete Modal']: () => {
+  ['Open Modal']: () => {
     return (
-      <Modal onRequestClose={() => {}} isOpen={true}>
-        <ConfirmModal
-          type={ConfirmModalType.DELETE}
-          dispatches={{}}
-          onClose={() => {}}
-        />
-      </Modal>
+      <ConfirmModal
+        title="title"
+        description="description"
+        accept={acceptButton}
+        decline={{ ...declineButton }}
+        isOpen={true}
+        onRequestClose={() => {}}
+      />
     );
   },
-  ['Leave Modal']: () => {
+  ['Closed Modal']: () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
     return (
-      <Modal onRequestClose={() => {}} isOpen={true}>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
         <ConfirmModal
-          type={ConfirmModalType.LEAVE}
-          dispatches={
-            {
-              /* Will not process dispatch as there is no pageContent available */
-            }
-          }
-          onClose={() => {}}
+          title="title"
+          description="description"
+          accept={acceptButton}
+          decline={{ ...declineButton, onClick: () => setIsOpen(false) }}
+          isOpen={isOpen}
+          onRequestClose={() => setIsOpen(false)}
         />
-      </Modal>
-    );
-  },
-  ['Publish Modal']: () => {
-    return (
-      <Modal onRequestClose={() => {}} isOpen={true}>
-        <ConfirmModal
-          type={ConfirmModalType.PUBLISH}
-          dispatches={{
-            onPublishPage: async (item, isSuccess) => {
-              alert(`You have published page ${item.id}`);
-              isSuccess(true);
-            },
-          }}
-          onClose={() => {}}
-        />
-      </Modal>
-    );
-  },
-  ['Custom Content']: () => {
-    return (
-      <Modal onRequestClose={() => {}} isOpen={true}>
-        <ConfirmModal
-          type={ConfirmModalType.LEAVE}
-          dispatches={
-            {
-              /* Will not process dispatch as there is no pageContent available */
-            }
-          }
-          customContent={{
-            title: 'Please save your changes',
-            description:
-              'You need to save your changes before you can preview or publish your page.',
-            decline: { text: 'Cancel' },
-          }}
-          onClose={() => {}}
-        />
-      </Modal>
+      </>
     );
   },
 };

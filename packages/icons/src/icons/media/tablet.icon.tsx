@@ -1,9 +1,10 @@
 export const TabletIcon = (): JSX.Element => {
   return (
     <svg
-      width="10"
-      height="16"
-      viewBox="0 0 12 16"
+      width="18"
+      height="20"
+      viewBox="1 -1 8 14"
+      preserveAspectRatio="xMidYMin"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

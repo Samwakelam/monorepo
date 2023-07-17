@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react';
 
 export type CarouselProps = {
-    visibleSlides?: number;
-    isFullWidth?: boolean;
-    children: ReactElement | ReactElement[];
-}
+  visibleSlides?: number;
+  isFullWidth?: boolean;
+  children: ReactElement | ReactElement[];
+};

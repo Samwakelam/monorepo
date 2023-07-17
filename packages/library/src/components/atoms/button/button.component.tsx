@@ -1,29 +1,39 @@
 import { apply, CSSRules, Directive, tw } from '@sam/theme/twind';
 import { Icon } from '@sam/icons';
 
-import { ButtonProps, ButtonVariant } from './button.definition';
+import { useTheme } from '../../../providers';
+
+import { ButtonProps, ButtonType, ButtonVariant } from './button.definition';
 
 import * as S from './button.styles';
 
 export const Button = ({
-  buttonVariant = ButtonVariant.PRIMARY,
+  buttonType = ButtonType.PRIMARY,
   children,
   className,
   onClick,
   icon,
-  startIcon,
-  endIcon,
   disabled = false,
   loading = false,
+  variant = ButtonVariant.FILL,
 }: ButtonProps) => {
+  const { theme } = useTheme();
+
   return (
     <button
       onClick={onClick}
       className={tw(
-        apply(resolveButtonVariant(buttonVariant), icon && S.IconButtonCss),
-        className
+        apply(
+          resolveButtonType(buttonType),
+          icon &&
+            icon.format === 'only' &&
+            buttonType !== ButtonType.NONE &&
+            S.IconButtonCss,
+        ),
+        className,
       )}
       disabled={disabled}
+      data-variant={variant}
     >
       {loading && (
         <span className={tw(S.LoadingCss)}>
@@ -31,33 +41,36 @@ export const Button = ({
         </span>
       )}
       <span className={tw(S.ButtonContentContainerCss)} aria-hidden={loading}>
-        {startIcon && <Icon {...startIcon} />}
-        {children && children}
-        {icon && <Icon {...icon} />}
-        {endIcon && <Icon {...endIcon} />}
+        {icon?.format === 'start' && <Icon {...icon} />}
+        {children && icon?.format !== 'only' && children}
+        {icon && icon.format === 'only' && <Icon {...icon} />}
+        {icon?.format === 'end' && <Icon {...icon} />}
       </span>
     </button>
   );
 };
 
-const resolveButtonVariant = (
-  variant: ButtonVariant
+const resolveButtonType = (
+  type: ButtonType,
 ): Directive<CSSRules> | Directive<CSSRules>[] => {
-  switch (variant) {
-    case ButtonVariant.SECONDARY: {
+  switch (type) {
+    case ButtonType.SECONDARY: {
       return [S.buttonCss, S.SecondaryButtonCss];
     }
-    case ButtonVariant.TERTIARY: {
+    case ButtonType.TERTIARY: {
       return [S.buttonCss, S.TertiaryButtonCss];
     }
-    case ButtonVariant.SUCCESS: {
+    case ButtonType.SUCCESS: {
       return [S.buttonCss, S.SuccessButtonCss];
     }
-    case ButtonVariant.PRODUCT: {
+    case ButtonType.PRODUCT: {
       return [S.buttonCss, S.ProductButtonCss];
     }
-    case ButtonVariant.NONE: {
+    case ButtonType.NONE: {
       return S.UnstyledButtonCss;
+    }
+    case ButtonType.GRADIENT: {
+      return [S.buttonCss, S.GradientButtonCss, S.GradientButtonClasses];
     }
     default: {
       return S.buttonCss;

@@ -3,7 +3,7 @@ import ReactModal from 'react-modal';
 
 import { tw, apply } from '@sam/theme/twind';
 
-import { Button, ButtonVariant } from '../button';
+import { Button, ButtonType } from '../button';
 
 import { SlideOutDrawerProps } from './slide-out-drawer.definition';
 
@@ -41,8 +41,8 @@ export const SlideOutDrawer = ({
     >
       <div className={tw(S.HeaderCss)}>
         <Button
-          buttonVariant={ButtonVariant.NONE}
-          icon={{ icon: 'arrow-left', ariaLabel: 'back' }}
+          buttonType={ButtonType.NONE}
+          icon={{ icon: 'arrow-left', ariaLabel: 'back', format: 'only' }}
           onClick={onRequestClose}
         />
         {drawerTitle && <h5>{drawerTitle}</h5>}

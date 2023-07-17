@@ -1,7 +1,5 @@
 import { css, theme } from '@sam/theme/twind';
 
-export const DrawerStyles = ``;
-
 export const DrawerCss = css({
   '&': {
     backgroundColor: theme('colors.neutral.50'),
@@ -19,10 +17,6 @@ export const DrawerCss = css({
     width: '50%',
   },
 });
-
-export const OverlayStyles = `
-
-`;
 
 export const OverlayCss = css({
   '&': {

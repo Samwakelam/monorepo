@@ -2,9 +2,7 @@ import { css, CSSRules, Directive, theme } from '@sam/theme/twind';
 
 import { spacing } from '@sam/theme';
 
-export const SlideMenuLinkStyles = ``;
-
-export const SlideMenuLinkCss: Directive<CSSRules> = css({
+export const SideMenuLinkCss: Directive<CSSRules> = css({
   '&': {
     display: 'block',
     backgroundColor: theme('colors.neutral.50'),
@@ -17,7 +15,7 @@ export const SlideMenuLinkCss: Directive<CSSRules> = css({
   },
 });
 
-export const SlideMenuLinkActiveCss: Directive<CSSRules> = css({
+export const SideMenuLinkActiveCss: Directive<CSSRules> = css({
   '&': {
     backgroundColor: theme('colors.neutral.900'),
     color: theme('colors.neutral.50'),

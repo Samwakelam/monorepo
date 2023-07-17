@@ -7,5 +7,8 @@ module.exports = {
       rootDir: ['apps/*/'],
     },
   },
-  rules: {},
+  rules: {
+    "import/no-anonymous-default-export": false,
+    "react/display-name": false,
+  },
 };

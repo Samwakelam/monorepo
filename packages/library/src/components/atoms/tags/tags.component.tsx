@@ -11,6 +11,7 @@ export const Tags = ({ tags, className }: TagProps): ReactElement<TagProps> => {
     blue: S.BlueCss,
     green: S.GreenCss,
     orange: S.OrangeCss,
+    white: S.WhiteCss,
   };
 
   return (

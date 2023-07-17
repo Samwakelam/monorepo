@@ -2,6 +2,7 @@ export enum TagColour {
   BLUE = 'blue',
   GREEN = 'green',
   ORANGE = 'orange',
+  WHITE = 'white'
 }
 
 export type Tag = {

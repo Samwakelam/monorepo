@@ -45,7 +45,13 @@ describe('dropdown.component', () => {
         trigger={{
           type: TriggerType.CUSTOM,
           customTrigger: (
-            <Button icon={{ icon: 'plus', ariaLabel: 'custom trigger' }} />
+            <Button
+              icon={{
+                icon: 'plus',
+                ariaLabel: 'custom trigger',
+                format: 'only',
+              }}
+            />
           ),
         }}
         menuItems={menuItems}

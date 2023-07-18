@@ -2,9 +2,9 @@ import { css, theme, Directive, CSSRules, Context } from '@sam/theme/twind';
 
 import { BasisProps } from './group.definition';
 
-export const GroupCss: (
+export const GroupCss = (
   spacing: (context: Context) => string | undefined,
-) => Directive<CSSRules> = (spacing) =>
+): Directive<CSSRules> =>
   css({
     '&': {
       display: 'flex',

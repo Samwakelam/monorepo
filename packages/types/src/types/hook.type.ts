@@ -2,12 +2,12 @@ import React from 'react';
 
 type EventHandler<E extends React.SyntheticEvent<any, Event>> = (
   event: E,
-  callback: () => void
+  callback: () => void,
 ) => void;
 
 export interface Hook<
   S extends Record<string, unknown>,
-  H extends Record<string, EventHandler<any>>
+  H extends Record<string, EventHandler<any>>,
 > {
   state: S;
   handlers: H;

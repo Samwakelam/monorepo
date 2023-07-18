@@ -10,6 +10,7 @@ export * from './side-menu';
 export * from './side-menu-link';
 export * from './slide-out-drawer';
 export * from './star-rating';
+export * from './sudo-fixed';
 export * from './tags';
 export * from './tooltip';
 export * from './user-image';

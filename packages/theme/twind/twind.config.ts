@@ -28,6 +28,7 @@ export const themeConfig: Configuration = {
       88: '5.5rem',
       96: '6rem',
       112: '7rem',
+      120: '7.5rem',
       144: '9rem',
       208: '13rem',
       304: '19rem',

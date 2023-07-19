@@ -1,6 +1,6 @@
 import { Children, ReactElement, useMemo, useRef } from 'react';
 
-import { Context, apply, theme, tw } from '@sam/theme/twind';
+import { apply, tw } from '@sam/theme/twind';
 
 import { GroupProps } from './group.definition';
 import { useGroup } from './group.hook';
@@ -18,7 +18,7 @@ export const Group = ({
   const group = useRef<HTMLDivElement>(null);
 
   const {
-    handlers: { getBasis },
+    handlers: { getBasis, resolveSpacing },
   } = useGroup({
     columns,
     collapseLayout,
@@ -27,19 +27,6 @@ export const Group = ({
   });
 
   const basis = useMemo(() => getBasis(), [columns, children]);
-
-  const resolveSpacing = (
-    spacing: GroupProps['spacing'],
-  ): ((context: Context) => string | undefined) => {
-    switch (spacing) {
-      case 'lg':
-        return theme('spacing.32');
-      case 'md':
-        return theme('spacing.24');
-      default:
-        return theme('spacing.16');
-    }
-  };
 
   return (
     <section

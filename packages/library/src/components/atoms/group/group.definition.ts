@@ -1,3 +1,4 @@
+import { Context } from '@sam/theme/twind';
 import { ReactElement, RefObject } from 'react';
 
 export type GroupProps = {
@@ -16,7 +17,9 @@ export type GroupState = {};
 export type GroupHandlers = {
   getBasis: () => BasisProps;
   getColumnAdjustment: () => number;
-  resolveSpacing: () => string;
+  resolveSpacing: (
+    spacing: GroupProps['spacing'],
+  ) => (context: Context) => string | undefined;
 };
 
 export interface GroupHookProps

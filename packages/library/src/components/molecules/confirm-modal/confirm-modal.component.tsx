@@ -1,6 +1,6 @@
 import { tw } from '@sam/theme/twind';
 
-import { Button, Modal } from '../../atoms';
+import { Button, ButtonType, Modal } from '../../atoms';
 
 import { ConfirmModalProps } from './confirm-modal.definition';
 
@@ -12,6 +12,7 @@ export const ConfirmModal = ({
   accept,
   decline,
   isOpen,
+  children,
   onRequestClose,
 }: ConfirmModalProps) => {
   return (
@@ -19,9 +20,10 @@ export const ConfirmModal = ({
       <div className={tw(S.ConfirmModalCss)}>
         <h2>{title}</h2>
         <p>{description}</p>
+        {children}
         <div className={tw(S.ButtonWrapperCss)}>
           <Button {...accept} />
-          <Button {...decline} />
+          <Button buttonType={ButtonType.TERTIARY} {...decline} />
         </div>
       </div>
     </Modal>

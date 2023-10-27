@@ -6,15 +6,28 @@ export enum ThemeType {
   NEOMORPHIC = 'neomorphic',
 }
 
-export type ThemeState = ThemeType;
+export enum ThemeMode {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
+export type ThemeState = {
+  type: ThemeType;
+  mode: ThemeMode;
+};
 
 export type ThemeHandlers = {
-  setTheme: (theme: ThemeState) => void;
+  setThemeType: (theme: ThemeState['type']) => void;
+  setDarkMode: (theme: ThemeState['mode']) => void;
 };
 
 export type ThemeContextProps = {
-  theme: String;
+  theme: ThemeState;
   handlers: ThemeHandlers;
 };
 
-export type ThemeProviderProps = { theme?: ThemeType; children: ReactElement };
+export type ThemeProviderProps = {
+  isDarkMode: boolean;
+  theme?: ThemeType;
+  children: ReactElement;
+};

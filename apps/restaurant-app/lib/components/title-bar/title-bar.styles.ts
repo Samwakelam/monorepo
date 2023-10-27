@@ -1,4 +1,4 @@
-import { css } from '@sam/theme/twind';
+import { css, theme } from '@sam/theme/twind';
 
 export const TitleBarCss = css({
   '&': {
@@ -6,7 +6,7 @@ export const TitleBarCss = css({
     justifyContent: 'space-between',
 
     article: {
-      width: '23rem',
+      width: theme('spacing.384'),
     },
   },
 });

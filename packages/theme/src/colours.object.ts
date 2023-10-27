@@ -1,10 +1,32 @@
-export type Colours = {
-  [key: string]: any;
-};
+export type Colours = Record<string, any>;
 
 export const colours: Colours = {
   black: '#000000',
   white: '#ffffff',
+  whiteAlpha: {
+    50: 'rgba(255, 255, 255, 0.04)',
+    100: 'rgba(255, 255, 255, 0.06)',
+    200: 'rgba(255, 255, 255, 0.08)',
+    300: 'rgba(255, 255, 255, 0.16)',
+    400: 'rgba(255, 255, 255, 0.24)',
+    500: 'rgba(255, 255, 255, 0.36)',
+    600: 'rgba(255, 255, 255, 0.48)',
+    700: 'rgba(255, 255, 255, 0.64)',
+    800: 'rgba(255, 255, 255, 0.80)',
+    900: 'rgba(255, 255, 255, 0.92)',
+  },
+  blackAlpha: {
+    50: 'rgba(0, 0, 0, 0.04)',
+    100: 'rgba(0, 0, 0, 0.06)',
+    200: 'rgba(0, 0, 0, 0.08)',
+    300: 'rgba(0, 0, 0, 0.16)',
+    400: 'rgba(0, 0, 0, 0.24)',
+    500: 'rgba(0, 0, 0, 0.36)',
+    600: 'rgba(0, 0, 0, 0.48)',
+    700: 'rgba(0, 0, 0, 0.64)',
+    800: 'rgba(0, 0, 0, 0.80)',
+    900: 'rgba(0, 0, 0, 0.92)',
+  },
   slate: {
     50: '#f8fafc',
     100: '#f1f5f9',
@@ -233,7 +255,7 @@ export const colours: Colours = {
     800: '#6b21a8',
     900: '#581c87',
   },
-  fushia: {
+  fuchsia: {
     50: '#fdf4ff',
     100: '#fae8ff',
     200: '#f5d0fe',

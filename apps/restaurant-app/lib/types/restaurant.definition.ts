@@ -1,3 +1,5 @@
+import { ImageProps } from '@sam/types';
+
 export enum RestaurantType {
   EAT_IN = 'eat-in',
   TAKE_AWAY = 'take-away',
@@ -28,16 +30,22 @@ export type RestaurantTag =
 
 export type Cuisine = 'pizza' | 'italian' | 'indian' | 'other';
 
+export type Group = {
+  id: string;
+  name: string;
+};
+
 export type Review = {
   rating: number;
   by: string;
   reason: string;
+  date: Date;
 };
 
 export type Visit = {
   impression: ImpressionType;
   by: string;
-  with: string;
+  with: string | null;
 };
 
 export type Restaurant = {
@@ -47,6 +55,7 @@ export type Restaurant = {
   tags: RestaurantTag[];
   cuisine: Cuisine;
   type: RestaurantType;
+  image: ImageProps | null;
   reviews: Review[];
   visits: Visit[];
 };

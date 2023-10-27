@@ -8,7 +8,6 @@ import * as S from './input.styles';
 
 export const Input = ({
   id,
-  label,
   type = 'text',
   hasError,
   isValid,
@@ -24,7 +23,7 @@ export const Input = ({
       className={tw(
         S.InputCss,
         hasError && S.InputHasErrorCss,
-        isValid && S.InputIsValidCss
+        isValid && S.InputIsValidCss,
       )}
       required={required}
       type={type}

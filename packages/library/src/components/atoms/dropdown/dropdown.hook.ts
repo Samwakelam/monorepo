@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { tw } from '@sam/theme/twind';
 import { Hook } from '@sam/types';
 
-import { ButtonType } from '../button';
+import { ButtonType, ButtonVariant } from '../button';
 
 import {
   Alignment,
@@ -18,7 +18,7 @@ import * as S from './dropdown.styles';
 export const useDropdown = (
   contentRef: React.RefObject<HTMLDivElement>,
   buttonRef: React.RefObject<HTMLDivElement>,
-  menuItems: DropdownProps['menuItems']
+  menuItems: DropdownProps['menuItems'],
 ): Hook<DropdownState, DropdownHandlers> => {
   const [state, setState] = useState<DropdownState>({
     isActive: false,
@@ -32,7 +32,7 @@ export const useDropdown = (
   };
 
   const handleClickOutside: DropdownHandlers['handleClickOutside'] = (
-    event
+    event,
   ) => {
     event.preventDefault();
 
@@ -47,13 +47,14 @@ export const useDropdown = (
   };
 
   const resolveTriggerButton: DropdownHandlers['resolveTriggerButton'] = (
-    triggerType
+    triggerType,
   ) => {
     switch (triggerType) {
       case TriggerType.V_TRIMMED: {
         return {
-          className: tw(S.MenuTriggerStyles, S.MenuTriggerCss),
-          buttonType: ButtonType.NONE,
+          className: tw(S.MenuTriggerClasses, S.MenuTriggerCss),
+          buttonType: ButtonType.PRIMARY,
+          variant: ButtonVariant.GHOST,
           icon: {
             icon: 'more-v',
             ariaLabel: 'trimmed vertical menu',
@@ -66,11 +67,12 @@ export const useDropdown = (
       case TriggerType.SELECTED: {
         return {
           className: tw(
-            S.MenuTriggerStyles,
+            S.MenuTriggerClasses,
             S.MenuTriggerCss,
-            S.TriggerSelectedCss
+            S.TriggerSelectedCss,
           ),
-          buttonType: ButtonType.NONE,
+          buttonType: ButtonType.PRIMARY,
+          variant: ButtonVariant.UNSTYLED,
           icon: {
             icon: state.isActive ? 'chevron-up' : 'chevron-down',
             ariaLabel: 'more',

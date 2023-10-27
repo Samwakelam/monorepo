@@ -10,7 +10,7 @@ import {
 
 export const useInputGroup = (
   initialValue: string,
-  validators: FieldValidators
+  validators: FieldValidators,
 ): Hook<InputGroupState, InputGroupHandlers> => {
   const [state, setState] = useState<InputGroupState>({
     value: initialValue,
@@ -21,11 +21,24 @@ export const useInputGroup = (
     isValid: false,
   });
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.stopPropagation();
-    e.preventDefault();
+  const onChange = (
+    e?: React.ChangeEvent<HTMLInputElement>,
+    element?: HTMLInputElement,
+  ): void => {
+    let inputField;
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
 
-    const inputField = e.currentTarget as HTMLInputElement;
+      inputField = e.currentTarget as HTMLInputElement;
+    }
+
+    if (element) {
+      inputField = element;
+    }
+
+    if (!inputField) return;
+
     const inputValue = inputField.value;
 
     const errorMessages: (string | undefined)[] = validators.map(
@@ -35,7 +48,7 @@ export const useInputGroup = (
         if (!isValid) {
           return message;
         }
-      }
+      },
     );
 
     setState((prevState) => ({
@@ -49,8 +62,28 @@ export const useInputGroup = (
     }));
   };
 
+  const onClearValue = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    const inputField = e.currentTarget.previousSibling as HTMLInputElement;
+
+    inputField.value = '';
+
+    onChange(undefined, inputField);
+  };
+
+  const updateValue = (value: string) => {
+    setState((prev) => ({
+      ...prev,
+      value,
+    }));
+  };
+
   return {
     state,
-    handlers: { onChange },
+    handlers: { onChange, onClearValue, updateValue },
   };
 };

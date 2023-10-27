@@ -23,17 +23,17 @@ export type InputGroupState = {
 
 export type InputGroupHandlers = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClearValue: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  updateValue: (value: string) => void;
 };
 
 export interface InputGroupProps
-  extends LabelProps,
-    Omit<InputProps, 'hasError' | 'isValid'> {
+  extends Omit<InputProps, 'hasError' | 'isValid' | 'label'> {
   id?: string;
-  label: string;
   associatedForm?: string;
-  showLabel: boolean;
-  labelText: string;
+  label?: LabelProps;
   name: string;
+  clearField?: boolean;
   state: InputGroupState;
   handlers: InputGroupHandlers;
 }

@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { ButtonProps, ModalProps } from '../../atoms';
 
 export interface ConfirmModalProps
@@ -6,6 +7,7 @@ export interface ConfirmModalProps
   description: string;
   accept: ButtonProps;
   decline: ButtonProps;
+  children: ReactElement | ReactElement[];
 }
 
 export type ConfirmModalHandlers = {

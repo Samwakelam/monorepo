@@ -25,5 +25,6 @@ export const spacing: Spacing = {
   144: '9rem',
   208: '13rem',
   304: '19rem',
+  384: '24rem',
   544: '34rem',
 };

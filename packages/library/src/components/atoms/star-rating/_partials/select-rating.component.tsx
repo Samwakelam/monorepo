@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from 'react';
 import { FillType } from '@sam/icons';
 import { tw } from '@sam/theme/twind';
 
-import { Button, ButtonType } from '../../button';
+import { Button, ButtonType, ButtonVariant } from '../../button';
 
 import { StarRatingComponentProps } from '../star-rating.definition';
 
@@ -28,7 +28,7 @@ export const SelectRating = ({
         return (
           <Button
             key={`select-component-empty-${index}`}
-            buttonType={ButtonType.NONE}
+            variant={ButtonVariant.UNSTYLED}
             onClick={() => setSelected(index + 1)}
             icon={{
               format: 'only',

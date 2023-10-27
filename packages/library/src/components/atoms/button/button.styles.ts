@@ -7,6 +7,7 @@ import {
   keyframes,
 } from '@sam/theme/twind';
 import { spacing } from '@sam/theme';
+import { ButtonStyleProps } from './button.definition';
 
 export const buttonClasses: Directive<CSSRules> = apply`
     bg(
@@ -21,8 +22,6 @@ export const buttonClasses: Directive<CSSRules> = apply`
 
 export const buttonCss: Directive<CSSRules> = css({
   '&': {
-    backgroundColor: theme('colors.neutral.900'),
-    color: theme('colors.neutral.50'),
     textTransform: 'uppercase',
     fontWeight: theme('fontWeight.bold'),
     paddingTop: theme('spacing.12'),
@@ -36,9 +35,6 @@ export const buttonCss: Directive<CSSRules> = css({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  '&:hover': {
-    backgroundColor: theme('colors.neutral.700'),
   },
   '&:focus': {
     outline: `${spacing[2]} solid`,
@@ -61,39 +57,6 @@ export const buttonCss: Directive<CSSRules> = css({
     '&[data-stroke = true]': {
       height: theme('fontSize.18'),
     },
-
-    '& path': {
-      fill: theme('colors.neutral.50'),
-    },
-
-    '&[data-stroke = true] path': {
-      fill: 'transparent',
-      stroke: theme('colors.neutral.50'),
-    },
-  },
-
-  '&[data-variant = line]': {
-    backgroundColor: theme('colors.neutral.50'),
-    color: theme('colors.neutral.900'),
-    outlineStyle: `solid`,
-    outlineColor: theme('colors.neutral.900'),
-    outlineOffset: `-0.25rem`,
-    outlineWidth: theme('spacing.4'),
-
-    '&:hover': {
-      backgroundColor: theme('colors.neutral.200'),
-    },
-
-    '& svg': {
-      '& path': {
-        fill: theme('colors.neutral.900'),
-      },
-
-      '&[data-stroke = true] path': {
-        fill: 'transparent',
-        stroke: theme('colors.neutral.900'),
-      },
-    },
   },
 });
 
@@ -105,110 +68,56 @@ export const ButtonContentContainerCss = css({
   },
 });
 
-export const SecondaryButtonCss: Directive<CSSRules> = css({
-  '&': {
-    backgroundColor: theme('colors.neutral.50'),
-    color: theme('colors.neutral.900'),
-  },
-  '&:hover': {
-    backgroundColor: theme('colors.neutral.200'),
-  },
-  '& svg': {
-    '& path': {
-      fill: theme('colors.neutral.900'),
+export const SolidButtonCss = ({ bg, color, hover }: ButtonStyleProps) =>
+  css({
+    '&': {
+      backgroundColor: theme(`colors.${bg}`),
+      color: theme(`colors.${color}`),
     },
-
-    '&[data-stroke = true] path': {
-      stroke: theme('colors.neutral.900'),
+    '&:hover': {
+      backgroundColor: theme(`colors.${hover}`),
     },
-  },
-
-  '&[data-variant = line]': {
-    outlineColor: theme('colors.neutral.50'),
-    backgroundColor: theme('colors.neutral.900'),
-    color: theme('colors.neutral.50'),
-
     '& svg': {
       '& path': {
-        fill: theme('colors.neutral.50'),
+        fill: theme(`colors.${color}`),
       },
 
       '&[data-stroke = true] path': {
-        stroke: theme('colors.neutral.50'),
+        stroke: theme(`colors.${color}`),
+        fill: 'none',
       },
     },
+  });
 
-    '&:hover': {
-      backgroundColor: theme('colors.neutral.700'),
-    },
-  },
-});
+export const OutlineButtonCss = ({ bg, color, inherit }: ButtonStyleProps) =>
+  css({
+    '&': {
+      outlineStyle: `solid`,
+      outlineOffset: `-0.25rem`,
+      outlineWidth: theme('spacing.4'),
+      backgroundColor: 'transparent',
+      outlineColor: theme(`colors.${bg}`),
+      color: 'inherit',
 
-export const TertiaryButtonCss: Directive<CSSRules> = css({
-  '&': {
-    backgroundColor: theme('colors.neutral.400'),
-    color: theme('colors.neutral.900'),
-  },
-  '&:hover': {
-    backgroundColor: theme('colors.neutral.500'),
-  },
-  '& svg': {
-    '& path': {
-      fill: theme('colors.neutral.900'),
-    },
+      '& svg': {
+        '& path': {
+          fill: theme(`colors.${inherit}`),
+        },
 
-    '&[data-stroke = true] path': {
-      stroke: theme('colors.neutral.900'),
-    },
-  },
-  '&[data-variant = line]': {
-    outlineColor: theme('colors.neutral.400'),
-  },
-});
+        '&[data-stroke = true] path': {
+          stroke: theme(`colors.${inherit}`),
+          fill: 'none',
+        },
+      },
 
-export const SuccessButtonCss: Directive<CSSRules> = css({
-  '&': {
-    backgroundColor: theme('colors.green.600'),
-    color: theme('colors.neutral.50'),
-  },
-  '&:hover': {
-    backgroundColor: theme('colors.green.700'),
-  },
-  '& svg': {
-    '& path': {
-      fill: theme('colors.neutral.50'),
+      '&:hover': {
+        backgroundColor:
+          color.split('.')[1] < '500'
+            ? theme(`colors.blackAlpha.300`)
+            : theme('colors.whiteAlpha.300'),
+      },
     },
-
-    '&[data-stroke = true] path': {
-      stroke: theme('colors.neutral.50'),
-    },
-  },
-  '&[data-variant = line]': {
-    outlineColor: theme('colors.green.600'),
-  },
-});
-
-export const ProductButtonCss: Directive<CSSRules> = css({
-  '&': {
-    backgroundColor: theme('colors.sky.600'),
-    color: theme('colors.neutral.50'),
-  },
-  '&:hover': {
-    backgroundColor: theme('colors.sky.700'),
-  },
-  '& svg': {
-    '& path': {
-      fill: theme('colors.neutral.50'),
-    },
-
-    '&[data-stroke = true] path': {
-      stroke: theme('colors.neutral.50'),
-    },
-  },
-  '&[data-variant = line]': {
-    outlineColor: theme('colors.sky.600'),
-  },
-});
+  });
 
 export const IconButtonCss: Directive<CSSRules> = css({
   '&': {
@@ -222,10 +131,6 @@ export const IconButtonCss: Directive<CSSRules> = css({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-
-    '&[data-variant = line] path': {
-      fill: theme('colors.neutral.900'),
     },
   },
 });
@@ -243,7 +148,21 @@ export const GradientButtonClasses: Directive<CSSRules> = apply`
 `;
 
 export const GradientButtonCss: Directive<CSSRules> = css({
-  '&[data-variant = line]': {
+  '& svg': {
+    '&[data-stroke = true] path': {
+      stroke: theme('colors.neutral.50'),
+    },
+  },
+
+  '&:hover ': {
+    path: {
+      fill: theme('colors.neutral.200'),
+    },
+  },
+});
+
+export const GradientOutlineButtonCss = css({
+  '&': {
     outline: 'unset',
 
     '& span': {
@@ -270,30 +189,59 @@ export const GradientButtonCss: Directive<CSSRules> = css({
       },
     },
   },
-
-  '& svg': {
-    '&[data-stroke = true] path': {
-      stroke: theme('colors.neutral.50'),
-    },
-  },
-
-  '&:hover ': {
-    path: {
-      fill: theme('colors.neutral.200'),
-    },
-  },
 });
 
-export const UnstyledButtonCss: Directive<CSSRules> = css({
-  '&': {
-    backgroundColor: 'unset',
-    color: theme('colors.neutral.900'),
-    position: 'relative',
-  },
-  '& path': {
-    fill: theme('colors.neutral.900'),
-  },
-});
+export const GhostButtonCss: (
+  style: ButtonStyleProps,
+) => Directive<CSSRules> = ({ color, inherit }) =>
+  css({
+    '&': {
+      backgroundColor: 'unset',
+      color: theme(`colors.${inherit}`),
+      position: 'relative',
+    },
+    '& svg': {
+      fill: theme(`colors.${inherit}`),
+
+      '& path': {
+        fill: theme(`colors.${inherit}`),
+      },
+
+      '&[data-stroke = true] path': {
+        fill: 'none',
+      },
+    },
+    '&:hover': {
+      backgroundColor:
+        color.split('.')[1] < '500'
+          ? theme(`colors.blackAlpha.300`)
+          : theme('colors.whiteAlpha.300'),
+    },
+  });
+
+export const UnstyledButtonCss: (
+  style: ButtonStyleProps,
+) => Directive<CSSRules> = ({ inherit }) =>
+  css({
+    '&': {
+      backgroundColor: 'unset',
+      color: theme(`colors.${inherit}`),
+      position: 'relative',
+      padding: 'unset',
+      borderRadius: 'unset',
+    },
+    '& svg': {
+      fill: theme(`colors.${inherit}`),
+
+      '& path': {
+        fill: theme(`colors.${inherit}`),
+      },
+
+      '&[data-stroke = true] path': {
+        fill: 'none',
+      },
+    },
+  });
 
 export const Spin = keyframes({
   from: {

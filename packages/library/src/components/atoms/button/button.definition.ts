@@ -8,18 +8,28 @@ export enum ButtonType {
   TERTIARY = 'tertiary',
   SUCCESS = 'success',
   PRODUCT = 'product',
-  GRADIENT = 'gradient',
-  NONE = 'none',
 }
 
 export enum ButtonVariant {
-  FILL = 'fill',
-  LINE = 'line',
+  SOLID = 'solid',
+  OUTLINE = 'outline',
+  GRADIENT = 'gradient',
+  UNSTYLED = 'unstyled',
+  GHOST = 'ghost',
 }
 
 export interface ButtonIconProps extends IconProps {
   format: 'end' | 'start' | 'only';
 }
+
+type ButtonStyleKeyType = 'bg' | 'color' | 'hover' | 'inherit';
+
+export type ButtonStyleConfigProps = Record<
+  ButtonStyleKeyType,
+  [string, string]
+>;
+
+export type ButtonStyleProps = Record<ButtonStyleKeyType, string>;
 
 export type ButtonProps = {
   children?: ReactNode;

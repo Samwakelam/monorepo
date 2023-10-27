@@ -3,15 +3,20 @@ import { createContext, useContext, useState } from 'react';
 import {
   ThemeContextProps,
   ThemeHandlers,
+  ThemeMode,
   ThemeProviderProps,
   ThemeState,
   ThemeType,
 } from './theme.definition';
 
 export const ThemeContext = createContext<ThemeContextProps>({
-  theme: 'default',
+  theme: {
+    type: ThemeType.DEFAULT,
+    mode: ThemeMode.LIGHT,
+  },
   handlers: {
-    setTheme: () => {},
+    setThemeType: () => {},
+    setDarkMode: () => {},
   },
 });
 
@@ -20,21 +25,36 @@ export const useTheme = (): ThemeContextProps => {
 };
 
 export const ThemeProvider = ({
+  isDarkMode,
   theme = ThemeType.DEFAULT,
   children,
 }: ThemeProviderProps) => {
-  const [state, setState] = useState<ThemeState>(theme);
+  const [state, setState] = useState<ThemeState>({
+    type: theme,
+    mode: isDarkMode ? ThemeMode.DARK : ThemeMode.LIGHT,
+  });
 
-  const setTheme: ThemeHandlers['setTheme'] = (theme) => {
-    setState(theme);
+  const setThemeType: ThemeHandlers['setThemeType'] = (theme) => {
+    setState((prev) => ({
+      ...prev,
+      theme,
+    }));
+  };
+
+  const setDarkMode: ThemeHandlers['setDarkMode'] = (mode) => {
+    setState((prev) => ({
+      ...prev,
+      mode,
+    }));
   };
 
   return (
     <ThemeContext.Provider
       value={{
-        theme: state,
+        theme: { ...state },
         handlers: {
-          setTheme,
+          setThemeType,
+          setDarkMode,
         },
       }}
     >

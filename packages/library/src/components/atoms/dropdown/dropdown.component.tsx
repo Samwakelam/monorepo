@@ -2,7 +2,7 @@ import { ReactElement, useRef } from 'react';
 
 import { tw } from '@sam/theme/twind';
 
-import { Button, ButtonType } from '../button';
+import { Button, ButtonType, ButtonVariant } from '../button';
 
 import {
   ActiveStyleType,
@@ -43,7 +43,7 @@ export const Dropdown = ({
       <div
         className={tw(
           S.MenuListCss(isOffScreen === null ? align : isOffScreen),
-          isActive && S.MenuListActiveCss
+          isActive && S.MenuListActiveCss,
         )}
         ref={contentRef}
       >
@@ -57,9 +57,10 @@ export const Dropdown = ({
                 className={tw(
                   S.MenuButtonClasses,
                   menuItem.activeStyle &&
-                    resolveActiveStyle(menuItem.activeStyle, menuItem.isActive)
+                    resolveActiveStyle(menuItem.activeStyle, menuItem.isActive),
                 )}
-                buttonType={ButtonType.NONE}
+                buttonType={ButtonType.PRIMARY}
+                variant={ButtonVariant.UNSTYLED}
                 onClick={(e: any) => {
                   menuItem.onClick && menuItem.onClick();
                   handlers.onClose();
@@ -78,7 +79,7 @@ export const Dropdown = ({
 
 export const resolveActiveStyle = (
   styles: ActiveStyleType[],
-  isActive: boolean | undefined
+  isActive: boolean | undefined,
 ) => {
   const _styles = [];
 

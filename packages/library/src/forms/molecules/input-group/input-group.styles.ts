@@ -100,7 +100,8 @@ export const MessageCss = css({
   '&': {
     visibility: 'hidden',
     marginBottom: theme('spacing.8'),
-
+    marginTop: theme('spacing.8'),
+    minHeight: theme('spacing.20'),
     textTransform: 'none',
     float: 'left',
     width: '100%',
@@ -112,5 +113,20 @@ export const MessageErrorCss = css({
   '&': {
     color: theme('colors.red.500'),
     visibility: 'visible',
+  },
+});
+
+export const ClearFieldCss = css({
+  '&': {
+    position: 'absolute',
+    top: '50%',
+    right: theme('spacing.12'),
+    height: theme('spacing.24'),
+    width: theme('spacing.24'),
+    transform: 'translate(0, -50%)',
+
+    svg: {
+      height: theme('spacing.12'),
+    },
   },
 });

@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 import { tw } from '@sam/theme/twind';
 
-import { Button, ButtonType } from '../button';
+import { Button, ButtonType, ButtonVariant } from '../button';
 import { BarProps } from './bar.definition';
 
 import * as S from './bar.styles';
@@ -12,10 +12,8 @@ export const Bar = ({
   menu,
   children,
 }: BarProps): ReactElement<BarProps> => {
-
   return (
-    <div className={tw(S.BarCss)}
-    data-component='bar'>
+    <div className={tw(S.BarCss)} data-component="bar">
       {menu && (
         <div
           className={tw(S.TriggerBoxCss, menu.isFixed && S.TriggerBoxHiddenCss)}
@@ -23,8 +21,9 @@ export const Bar = ({
           <Button
             className={tw(S.TriggerCss)}
             icon={{ icon: 'burger', ariaLabel: 'open menu', format: 'only' }}
-            buttonType={ButtonType.NONE}
+            buttonType={ButtonType.PRIMARY}
             onClick={(e) => menu.onClick(e)}
+            variant={ButtonVariant.GHOST}
           />
         </div>
       )}

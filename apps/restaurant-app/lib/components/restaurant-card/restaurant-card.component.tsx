@@ -1,129 +1,99 @@
-import { useState } from 'react';
-
 import { tw } from '@sam/theme/twind';
-import {
-  Button,
-  ButtonType,
-  Card,
-  StarRating,
-  Tag,
-  TagColour,
-  Tags,
-} from '@sam/library';
+import { Button, ButtonType, Card, StarRating, Tags } from '@sam/library';
 import { FillType } from '@sam/icons';
 
-import {
-  CostType,
-  ImpressionType,
-  Restaurant,
-  RestaurantType,
-} from '../../types';
+import { ImpressionType } from '../../types';
+
+import { RestaurantCardProps } from './restaurant-card.definition';
+import { RestaurantModal } from '../restaurant-modal';
+import { useRestaurantCard } from './restaurant-card.hook';
 
 import * as S from './restaurant-card.styles';
 
 export const RestaurantCard = ({
-  name,
-  averageRating,
-  cost,
-  tags,
-  cuisine,
-  type,
-  reviews,
-  visits,
-}: Restaurant) => {
-  const [state, setState] = useState<{
-    restaurantImpression: ImpressionType | null;
-  }>({
-    restaurantImpression: null,
+  restaurant,
+  group,
+  openModal,
+}: RestaurantCardProps) => {
+  const {
+    name,
+    averageRating,
+    cost,
+    tags,
+    cuisine,
+    type,
+    reviews,
+    image,
+    visits,
+  } = restaurant;
+
+  const { state, handlers } = useRestaurantCard({
+    restaurant,
+    group,
+    openModal,
   });
 
   return (
-    <Card>
-      <h3>{name}</h3>
-      <h4>{resolveCost(cost)}</h4>
-      <h6>Visits: {visits.length}</h6>
-      <h6>reviews: {reviews.length}</h6>
-      <div>
-        <StarRating rating={averageRating} />
-      </div>
-      <div>
-        <Tags tags={createTags(tags)} />
-      </div>
-      <div>
-        <Tags tags={createTags([cuisine])} />
-      </div>
-      <div>
-        <Tags tags={[resolveRestaurantType(type)]} />
-      </div>
-      <div className={tw(S.ButtonBox)}>
-        <Button
-          buttonType={ButtonType.TERTIARY}
-          onClick={() =>
-            setState((prev) => ({
-              ...prev,
-              restaurantImpression: ImpressionType.GOOD,
-            }))
-          }
-          icon={{
-            icon: 'thumb-up',
-            fill:
-              state.restaurantImpression === ImpressionType.GOOD
-                ? FillType.SOLID
-                : FillType.OUTLINE,
-            format: 'only',
-            ariaLabel: 'good impression',
-          }}
-        />
-        <Button
-          buttonType={ButtonType.TERTIARY}
-          onClick={() =>
-            setState((prev) => ({
-              ...prev,
-              restaurantImpression: ImpressionType.BAD,
-            }))
-          }
-          icon={{
-            icon: 'thumb-down',
-            fill:
-              state.restaurantImpression === ImpressionType.BAD
-                ? FillType.SOLID
-                : FillType.OUTLINE,
-            format: 'only',
-            ariaLabel: 'bad impression',
-          }}
-        />
-      </div>
-    </Card>
+    <>
+      <Card
+        image={image ? image : undefined}
+        imageAsBackground
+        className={tw(S.RestaurantCardCss)}
+        contentClassName={tw(S.RestaurantCardContentCss)}
+        cta={{ onClick: () => handlers.handleOpenModal(true) }}
+      >
+        <h2>{name}</h2>
+        <h4>{handlers.resolveCost(cost)}</h4>
+        <h6>Visits: {visits.length}</h6>
+        <h6>reviews: {reviews.length}</h6>
+        <div className={tw(S.WhiteTextCss)}>
+          <StarRating rating={averageRating} />
+        </div>
+        <div className={tw(S.TagsBox)}>
+          <Tags tags={handlers.createTags(tags)} />
+          <Tags tags={handlers.createTags([cuisine])} />
+          <Tags tags={[handlers.resolveRestaurantType(type)]} />
+        </div>
+        <div className={tw(S.ButtonBox)}>
+          <Button
+            buttonType={ButtonType.SECONDARY}
+            onClick={(e) => {
+              e.stopPropagation();
+              handlers.handleImpressionClick(ImpressionType.GOOD);
+            }}
+            icon={{
+              icon: 'thumb-up',
+              fill:
+                state.restaurantImpression === ImpressionType.GOOD
+                  ? FillType.SOLID
+                  : FillType.OUTLINE,
+              format: 'only',
+              ariaLabel: 'good impression',
+            }}
+          />
+          <Button
+            buttonType={ButtonType.SECONDARY}
+            onClick={(e) => {
+              e.stopPropagation();
+              handlers.handleImpressionClick(ImpressionType.BAD);
+            }}
+            icon={{
+              icon: 'thumb-down',
+              fill:
+                state.restaurantImpression === ImpressionType.BAD
+                  ? FillType.SOLID
+                  : FillType.OUTLINE,
+              format: 'only',
+              ariaLabel: 'bad impression',
+            }}
+          />
+        </div>
+      </Card>
+      <RestaurantModal
+        restaurant={restaurant}
+        isOpen={state.openModal}
+        onRequestClose={() => handlers.handleOpenModal(false)}
+      />
+    </>
   );
-};
-
-const resolveCost = (cost: Restaurant['cost']): string => {
-  switch (cost) {
-    case CostType.LOW:
-      return '£';
-    case CostType.MID:
-      return '££';
-    case CostType.HIGH:
-      return '£££';
-  }
-};
-
-const createTags = (
-  tags: Restaurant['tags'] | Restaurant['cuisine'][],
-): Tag[] => {
-  return tags.map((tag) => {
-    return {
-      value: tag,
-      showTag: true,
-      colour: TagColour.WHITE,
-    };
-  });
-};
-
-const resolveRestaurantType = (type: Restaurant['type']): Tag => {
-  return {
-    value: type,
-    showTag: true,
-    colour: type === RestaurantType.EAT_IN ? TagColour.GREEN : TagColour.ORANGE,
-  };
 };

@@ -1,11 +1,10 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 
 import { tw, apply } from '@sam/theme/twind';
-import { Boundary, Unit, UnitType } from '@sam/types';
 
 import { getUnit } from '../../../helpers';
 
-import { useSudoHook } from './sudo-fixture.hook';
+import { useSudoHook } from './sudo-fixed.hook';
 import { SudoFixedProps } from './sudo-fixed.definition';
 
 import * as S from './sudo-fixed.styles';

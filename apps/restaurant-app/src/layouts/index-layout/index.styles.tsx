@@ -9,6 +9,7 @@ export const IndexLayoutCss = css({
 export const ContainerCss = css({
   '&': {
     display: 'flex',
+    gap: theme('spacing.16'),
     padding: theme('spacing.16'),
   },
 });

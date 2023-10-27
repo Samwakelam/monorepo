@@ -1,6 +1,5 @@
-import { ReactElement, useEffect, useRef } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactModal from 'react-modal';
-import ReactDOM from 'react-dom';
 
 import { tw } from '@sam/theme/twind';
 
@@ -12,6 +11,7 @@ import * as S from './modal.styles';
 
 export const Modal = ({
   modalTitle,
+  modalBanner,
   isOpen = false,
   onRequestClose,
   children,
@@ -47,7 +47,15 @@ export const Modal = ({
           onClick={onRequestClose}
         />
       </div>
-      <div className={tw(S.ContentCss)}>{children}</div>
+
+      {modalBanner && (
+        <img
+          src={modalBanner.src}
+          alt={modalBanner.alt}
+          className={tw(S.ImageCss)}
+        />
+      )}
+      <div className={tw(S.ContentCss(!!modalBanner))}>{children}</div>
     </ReactModal>
   );
 };

@@ -3,7 +3,7 @@ import ReactModal from 'react-modal';
 
 import { tw } from '@sam/theme/twind';
 
-import { Button, ButtonType, SideMenuLink } from '..';
+import { Button, ButtonType, ButtonVariant, SideMenuLink } from '..';
 
 import { SideMenuProps } from './side-menu.definition';
 
@@ -33,12 +33,12 @@ export const SideMenu = ({
         className={tw(
           S.SideMenuCss,
           isFixed && S.SideMenuFixedCss,
-          isOpen && S.BeforeCloseCss
+          isOpen && S.BeforeCloseCss,
         )}
         overlayClassName={tw(
           S.OverlayCss,
           S.OverlayStyles,
-          isFixed && S.OverlayFixedCss
+          isFixed && S.OverlayFixedCss,
         )}
         isOpen={true}
         shouldCloseOnEsc={true}
@@ -56,7 +56,8 @@ export const SideMenu = ({
           className={tw(S.CloseTriggerCss, isFixed && S.CloseTriggerFixedCss)}
           icon={{ icon: 'cross', ariaLabel: 'close menu', format: 'only' }}
           onClick={() => onRequestClose()}
-          buttonType={ButtonType.NONE}
+          buttonType={ButtonType.PRIMARY}
+          variant={ButtonVariant.GHOST}
         />
         <div className={tw(S.LinksContainerCss)}>
           {links.map((link, index) => (

@@ -10,6 +10,18 @@ export default {
       </Modal>
     );
   },
+  ['Open Modal with Banner']: () => {
+    return (
+      <Modal
+        isOpen={true}
+        onRequestClose={() => {}}
+        modalTitle="Modal Title"
+        modalBanner={{ src: '/image.jpg', alt: 'image' }}
+      >
+        <h3>Im a basic modal</h3>
+      </Modal>
+    );
+  },
   ['Closed Modal']: () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 

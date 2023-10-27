@@ -5,6 +5,7 @@ import { Icon } from '@sam/icons';
 
 import { Input, Label } from '../../atoms';
 import { getCase } from '../../../helpers';
+import { Button, ButtonType } from '../../../components';
 
 import { InputGroupProps } from './input-group.definition';
 
@@ -17,8 +18,7 @@ export const InputGroup = ({
   placeholder,
   required = false,
   associatedForm,
-  labelText,
-  showLabel,
+  clearField = false,
   state,
   handlers,
 }: InputGroupProps): ReactElement<InputGroupProps> => {
@@ -27,29 +27,41 @@ export const InputGroup = ({
     isValid,
     value,
   } = state;
-  const { onChange } = handlers;
+  const { onChange, onClearValue } = handlers;
 
   return (
     <article className={tw(S.InputGroupCss)}>
       <Label
-        htmlFor={getCase(label, 'kebab')}
+        htmlFor={getCase(label?.htmlFor || '', 'kebab')}
         form={associatedForm}
-        text={labelText}
-        showLabel={showLabel}
+        text={label?.text}
+        showLabel={label?.showLabel}
       />
       <div className={tw(S.InputWrapperCss)}>
         <Input
-          id={getCase(label, 'kebab')}
+          id={getCase(label?.htmlFor || '', 'kebab')}
           type={type}
           hasError={hasError}
           isValid={isValid}
-          name={name}
+          name={getCase(name, 'kebab')}
           placeholder={placeholder}
           form={associatedForm}
           required={required}
           onChange={onChange}
           value={value}
         />
+        {clearField && (
+          <Button
+            icon={{
+              icon: 'cross',
+              ariaLabel: 'clear input field',
+              format: 'only',
+            }}
+            buttonType={ButtonType.TERTIARY}
+            className={tw(S.ClearFieldCss)}
+            onClick={(e) => onClearValue(e)}
+          />
+        )}
         {isValid && (
           <div className={tw(S.IconCss, S.IconTickCss)}>
             <Icon icon="tick" ariaLabel="valid" />
@@ -60,14 +72,12 @@ export const InputGroup = ({
             <Icon icon="cross" ariaLabel="error" />
           </div>
         )}
-        {!hasError && (
-          <p className={tw(S.MessageCss)} aria-hidden="true">
-            You should never see or hear me
-          </p>
-        )}
-        {hasError && (
-          <p className={tw(S.MessageCss, S.MessageErrorCss)}>{messages}</p>
-        )}
+        <p
+          className={tw(S.MessageCss, hasError && S.MessageErrorCss)}
+          aria-hidden={!hasError}
+        >
+          {messages}
+        </p>
       </div>
     </article>
   );
